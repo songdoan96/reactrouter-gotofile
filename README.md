@@ -1,3 +1,5 @@
+![snippets in action](images/click.gif)
+
 ```
 npm install -g yo generator-code
 yo code
