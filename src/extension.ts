@@ -3,8 +3,19 @@ import * as vscode from "vscode";
 
 const OPEN_ROUTE_FILE = "routeAnnotator.openRouteFile";
 vscode.commands.registerCommand(OPEN_ROUTE_FILE, async (path) => {
-  const document = await vscode.workspace.openTextDocument(path);
-  await vscode.window.showTextDocument(document);
+  // const document = await vscode.workspace.openTextDocument(path);
+  // await vscode.window.showTextDocument(document);
+
+  const uri = vscode.Uri.file(path);
+  try {
+    await vscode.workspace.fs.stat(uri);
+    const document = await vscode.workspace.openTextDocument(uri);
+    await vscode.window.showTextDocument(document);
+  } catch (error) {
+    await vscode.workspace.fs.writeFile(uri, new Uint8Array());
+    const document = await vscode.workspace.openTextDocument(uri);
+    await vscode.window.showTextDocument(document);
+  }
 });
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
