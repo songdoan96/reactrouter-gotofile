@@ -3,7 +3,7 @@
   "name": "reactrouter-gotofile",
   "displayName": "reactrouter-gotofile",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -48,5 +48,9 @@
     "typescript": "^5.9.3",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songdoan96/reactrouter-gotofile.git"
   }
 }
