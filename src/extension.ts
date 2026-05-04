@@ -26,7 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
           const targetFile = "routes.ts";
           if (!document.fileName.endsWith(path.join("app", targetFile))) return [];
           const links: any = [];
-          const regex = /["'`](\.\/routes\/[^"'`]+\.(tsx))["'`]/g;
+          // const regex = /["'`](\.\/routes\/[^"'`]+\.(tsx))["'`]/g;
+          const regex = /["'`]((\.\/)?routes\/[^"'`]+\.(tsx))["'`]/g;
           let match;
           const text = document.getText();
           while ((match = regex.exec(text)) !== null) {
@@ -40,13 +41,13 @@ export function activate(context: vscode.ExtensionContext) {
                 command: OPEN_ROUTE_FILE,
                 arguments: [linkTargetPath],
                 tooltip: `Open file ${matchText}`,
-              })
+              }),
             );
           }
           return links;
         },
-      }
-    )
+      },
+    ),
   );
 }
 
